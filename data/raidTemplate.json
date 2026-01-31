@@ -1,0 +1,214 @@
+{
+  "version": 1,
+  "raid": {
+    "groupName": "Thelinor's Trap",
+    "selectedRaid": "Sanity's Edge",
+    "players": [
+      {
+        "id": 1,
+        "name": "Thranduil",
+        "role": "Tank",
+        "skillClasses": {
+          "MainSkillClass": "Earthen Heart",
+          "SecondSkillClass": "Draconic Power",
+          "ThirdSkillClass": "Ardent Flame"
+        },
+        "classMasteries": {
+          "firstClassMastery": "Mastery 1",
+          "secondClassMastery": "Mastery 2"
+        },
+        "mundus": "The Lord"
+      },
+      {
+        "id": 2,
+        "name": "Celebrimbor",
+        "role": "Tank",
+        "skillClasses": {
+          "MainSkillClass": "Earthen Heart",
+          "SecondSkillClass": "Draconic Power",
+          "ThirdSkillClass": "Ardent Flame"
+        },
+        "classMasteries": {
+          "firstClassMastery": "Mastery 1",
+          "secondClassMastery": "Mastery 2"
+        },
+        "mundus": "The Lord"
+      },
+      {
+        "id": 3,
+        "name": "Fingolfin",
+        "role": "Heal",
+        "skillClasses": {
+          "MainSkillClass": "Purifying Light",
+          "SecondSkillClass": "Dawn's Wrath",
+          "ThirdSkillClass": "Aedric Spear"
+        },
+        "classMasteries": {
+          "firstClassMastery": "Mastery 3",
+          "secondClassMastery": "Mastery 4"
+        },
+        "mundus": "The Thief"
+      }
+    ]
+  },
+  "fights": [
+    {
+      "name": "Taleria",
+      "playersStuff": [
+        {
+          "id": 1,
+          "name": "Thranduil",
+          "role": "Tank",
+          "sets": {
+            "head": "Turning Tide",
+            "chest": "Turning Tide",
+            "waist": "Turning Tide",
+            "boots": "Pearlescent Ward",
+            "shoulders": "Pearlescent Ward",
+            "gloves": "Pearlescent Ward",
+            "legs": "Turning Tide",
+            "ring1": "Infernal Guardian",
+            "ring2": "Infernal Guardian",
+            "necklace": "Infernal Guardian",
+            "mainBarWeapon1": "Sword & Board",
+            "mainBarWeapon2": "Maul",
+            "backBarWeapon1": "Sword & Board",
+            "backBarWeapon2": "Maul"
+          },
+          "competencies": {
+            "MainBar1": "Puncturing Sweep",
+            "MainBar2": "Heroic Slash",
+            "MainBar3": "Pierce Armor",
+            "MainBar4": "Igneous Shield",
+            "MainBar5": "Chains",
+            "MainBarUlt": "Magma Armor",
+            "BackBar1": "Heroic Slash",
+            "BackBar2": "Puncturing Sweep",
+            "BackBar3": "Pierce Armor",
+            "BackBar4": "Eruption",
+            "BackBar5": "Chains",
+            "BackBarUlt": "Standard of Might"
+          },
+          "championPoints": {
+            "Blue1": "Elemental Expert",
+            "Blue2": "Spell Shield",
+            "Blue3": "Thaumaturge",
+            "Blue4": "Restitution",
+            "Red1": "Mighty",
+            "Red2": "Bastion",
+            "Red3": "Hardy",
+            "Red4": "Piercing",
+            "Green1": "Focused Assault",
+            "Green2": "Precision",
+            "Green3": "Lethal Focus",
+            "Green4": "Tactical Precision"
+          },
+          "food": "Witchmother's Brew",
+          "potion": "Essence of Stamina"
+        },
+        {
+          "id": 2,
+          "name": "Celebrimbor",
+          "role": "Tank",
+          "sets": {
+            "head": "Turning Tide",
+            "chest": "Turning Tide",
+            "waist": "Turning Tide",
+            "boots": "Pearlescent Ward",
+            "shoulders": "Pearlescent Ward",
+            "gloves": "Pearlescent Ward",
+            "legs": "Turning Tide",
+            "ring1": "Infernal Guardian",
+            "ring2": "Infernal Guardian",
+            "necklace": "Infernal Guardian",
+            "mainBarWeapon1": "Sword & Board",
+            "mainBarWeapon2": "Maul",
+            "backBarWeapon1": "Sword & Board",
+            "backBarWeapon2": "Maul"
+          },
+          "competencies": {
+            "MainBar1": "Puncturing Sweep",
+            "MainBar2": "Heroic Slash",
+            "MainBar3": "Pierce Armor",
+            "MainBar4": "Igneous Shield",
+            "MainBar5": "Chains",
+            "MainBarUlt": "Magma Armor",
+            "BackBar1": "Heroic Slash",
+            "BackBar2": "Puncturing Sweep",
+            "BackBar3": "Pierce Armor",
+            "BackBar4": "Eruption",
+            "BackBar5": "Chains",
+            "BackBarUlt": "Standard of Might"
+          },
+          "championPoints": {
+            "Blue1": "Elemental Expert",
+            "Blue2": "Spell Shield",
+            "Blue3": "Thaumaturge",
+            "Blue4": "Restitution",
+            "Red1": "Mighty",
+            "Red2": "Bastion",
+            "Red3": "Hardy",
+            "Red4": "Piercing",
+            "Green1": "Focused Assault",
+            "Green2": "Precision",
+            "Green3": "Lethal Focus",
+            "Green4": "Tactical Precision"
+          },
+          "food": "Witchmother's Brew",
+          "potion": "Essence of Stamina"
+        },
+        {
+          "id": 3,
+          "name": "Fingolfin",
+          "role": "Heal",
+          "sets": {
+            "head": "Spell Power Cure",
+            "chest": "Spell Power Cure",
+            "waist": "Spell Power Cure",
+            "boots": "Sanctuary",
+            "shoulders": "Sanctuary",
+            "gloves": "Sanctuary",
+            "legs": "Spell Power Cure",
+            "ring1": "Ring of the Pale Order",
+            "ring2": "Ring of the Pale Order",
+            "necklace": "Ring of the Pale Order",
+            "mainBarWeapon1": "Restoration Staff",
+            "mainBarWeapon2": "Lightning Staff",
+            "backBarWeapon1": "Restoration Staff",
+            "backBarWeapon2": "Lightning Staff"
+          },
+          "competencies": {
+            "MainBar1": "Restoring Light",
+            "MainBar2": "Healing Ritual",
+            "MainBar3": "Respite",
+            "MainBar4": "Combat Prayer",
+            "MainBar5": "Luminous Shards",
+            "MainBarUlt": "Panacea",
+            "BackBar1": "Chain Lightning",
+            "BackBar2": "Degeneration",
+            "BackBar3": "Power Surge",
+            "BackBar4": "Reflective Light",
+            "BackBar5": "Inner Light",
+            "BackBarUlt": "Entropy Reduction"
+          },
+          "championPoints": {
+            "Blue1": "Elemental Expert",
+            "Blue2": "Spell Shield",
+            "Blue3": "Thaumaturge",
+            "Blue4": "Restitution",
+            "Red1": "Mighty",
+            "Red2": "Bastion",
+            "Red3": "Hardy",
+            "Red4": "Piercing",
+            "Green1": "Healing Aura",
+            "Green2": "Precision",
+            "Green3": "Quick Recovery",
+            "Green4": "Tactical Precision"
+          },
+          "food": "Witchmother's Brew",
+          "potion": "Essence of Magicka"
+        }
+      ]
+    }
+  ]
+}

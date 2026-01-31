@@ -1,36 +1,97 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TTemplate
 
-## Getting Started
+Application Next.js pour gérer un template de raid ESO, avec un modèle de données centralisé en JSON, une interface de configuration et des vues de tableau de raid.
 
-First, run the development server:
+## État actuel du projet
+
+Le projet a été refactoré pour adopter une architecture de source unique :
+
+- le JSON est maintenant le point central de vérité
+- toutes les pages lisent le document via le provider global
+- les actions d’édition modifient directement le document JSON en mémoire
+- l’export/import JSON est disponible depuis le menu burger
+- les personnages et les tableaux peuvent être ajoutés ou supprimés
+
+La structure principale est la suivante :
+
+- `app/RaidContext.tsx` : provider global du template et mutations
+- `lib/template-v2.ts` : schéma canonique, création, normalisation et export
+- `lib/templateIO.ts` : import/export JSON
+- `app/raid-setup/page.tsx` : configuration des joueurs et raid setup
+- `app/tableau/page.tsx` : vue des tableaux / édition des sets et skill abilities
+- `components/BurgerMenu.tsx` : menu d’import/export et navigation
+
+## Fonctionnalités livrées
+
+### Gestion du template
+
+- édition du nom, rôle, classes et masteries des joueurs
+- ajout/suppression de joueurs dans la liste du JSON
+- création/suppression de tableaux de combat
+- sélection du raid actif
+- chargement d’un template depuis un JSON importé
+- export du template actuel au format JSON
+
+### Vue tableau
+
+- affichage du raid avec ses tableaux
+- sélection de tableau actif
+- mode vue / mode édition
+- sélection d’ability via explorer visuel
+- sélection de set via explorer visuel
+- gestion des food et potion depuis l’UI
+- mise à jour directe des champs dans le document JSON
+
+### Architecture
+
+- pas de double source de vérité locale dans les pages
+- les composants lisent les données via `useRaid()`
+- toutes les mutations passent par des fonctions du provider
+- le JSON est exportable et réutilisable tel quel pour un import futur
+
+## Données
+
+Le document principal est le template JSON exposé via `lib/template-v2.ts`, avec des structures comme :
+
+- `raid.players`
+- `raid.selectedRaid`
+- `fights[]`
+- `fights[].playersStuff[]`
+- `sets`, `competencies`, `food`, `potion`
+
+Cela permet de conserver un format lisible et portable, compatible avec une réimportation dans l’application.
+
+## Démarrage
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Puis ouvrir :
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Vérification
 
-## Learn More
+Le projet a été validé avec :
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run build
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Résultat vérifié : build Next.js réussi, sans erreurs TypeScript.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Points de vigilance
 
-## Deploy on Vercel
+- la vue tableau doit conserver l’UX historique avec des sélecteurs visuels
+- les sets et les abilities doivent rester basés sur des choix plutôt que du texte libre
+- le JSON doit rester lisible et exploitable comme source de données exportée
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## À venir
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- finaliser le rendu visuel des set icons
+- compléter le rendu historique des lignes de skills/sets selon les maquettes précédentes
+- poursuivre le refactor sur d’autres écrans si nécessaire
