@@ -2,11 +2,15 @@
   "name": "ttemplate",
   "version": "0.1.0",
   "private": true,
+  "main": "electron/main.cjs",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test": "vitest run",
+    "electron": "electron .",
+    "dist": "npm run build && electron-builder --win"
   },
   "dependencies": {
     "next": "16.1.6",
@@ -18,9 +22,31 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "electron": "^44.4.3",
+    "electron-builder": "^26.15.3",
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^2.1.9"
+  },
+  "build": {
+    "appId": "com.ttemplate.app",
+    "productName": "TTemplate",
+    "files": [
+      "electron/**/*",
+      ".next/**/*",
+      "public/**/*",
+      "app/**/*",
+      "components/**/*",
+      "lib/**/*",
+      "data/**/*",
+      "package.json",
+      "next.config.ts",
+      "next-env.d.ts"
+    ],
+    "win": {
+      "target": "nsis"
+    }
   }
 }

@@ -1,8 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #050506;
+  --foreground: #f8f7f2;
+  --panel: #111111;
+  --panel-soft: #171717;
+  --line: #d6d0bd;
+  --muted: #b7b5aa;
+  --gold: #d6b46b;
 }
 
 @theme inline {
@@ -12,15 +17,120 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(255,255,255,0.035) 1px, transparent 1px);
+  background-size: 38px 38px;
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1), transparent 100%);
+  opacity: 0.8;
+}
+
+/* ESO-like dark theme normalization for the rest of the site */
+.bg-amber-950,
+.bg-amber-900,
+.bg-yellow-950,
+.bg-yellow-900,
+.bg-yellow-700,
+.bg-yellow-600,
+.bg-yellow-500 {
+  background-color: #111111 !important;
+}
+
+.bg-gradient-to-b,
+.bg-gradient-to-r {
+  background-image: none !important;
+}
+
+.border-yellow-600,
+.border-yellow-700,
+.border-yellow-500,
+.border-yellow-400 {
+  border-color: #d6b46b !important;
+}
+
+.border-yellow-700 {
+  border-color: #8f7244 !important;
+}
+
+.text-yellow-100,
+.text-yellow-200,
+.text-yellow-300,
+.text-yellow-400,
+.text-yellow-50 {
+  color: #f8f7f2 !important;
+}
+
+.text-yellow-300 {
+  color: #d6b46b !important;
+}
+
+.text-yellow-400 {
+  color: #f7e7ba !important;
+}
+
+.bg-black\/20,
+.bg-black\/30,
+.bg-black\/35,
+.bg-black\/40,
+.bg-black\/60,
+.bg-black\/70 {
+  background-color: rgba(0, 0, 0, 0.78) !important;
+}
+
+.bg-gray-800,
+.bg-gray-900 {
+  background-color: #111111 !important;
+}
+
+.hover\:bg-yellow-900:hover,
+.hover\:bg-yellow-700:hover,
+.hover\:bg-yellow-600:hover,
+.hover\:bg-yellow-500:hover {
+  background-color: #242424 !important;
+}
+
+/* Custom scrollbar styling for dropdowns */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0c0c0d;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d6b46b;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #f7e7ba;
+}
+
+/* Animation pour les dropdowns */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
