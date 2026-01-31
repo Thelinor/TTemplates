@@ -1,0 +1,197 @@
+{
+  "raidName": "Sanity's Edge",
+  "players": [
+    {
+      "id": 1,
+      "name": "Aldarion",
+      "classes": ["Assassination", "Ardent Flame", "Earthen Heart"],
+      "role": "Tank",
+      "sets": ["Turning Tide", "Pearlescent Ward"],
+      "bars": {
+        "front": ["Pierce Armor", "Heroic Slash"],
+        "back": ["Igneous Shield", "Chains"]
+      },
+      "championPoints": {
+        "warior": ["", "", "", ""],
+        "mage": ["", "", "", ""],
+        "steed": ["", "", "", ""]
+      }
+    },
+    {
+      "id": 2,
+      "name": "Thorgrim",
+      "classes": ["Assassination", "Ardent Flame", "Earthen Heart"],
+      "role": "Tank",
+      "sets": ["Turning Tide", "Pearlescent Ward"],
+      "bars": {
+        "front": ["Pierce Armor", "Heroic Slash"],
+        "back": ["Igneous Shield", "Chains"]
+      },
+      "championPoints": {
+        "warior": ["", "", "", ""],
+        "mage": ["", "", "", ""],
+        "steed": ["", "", "", ""]
+      }
+    },
+    {
+      "id": 3,
+      "name": "Sylvara",
+      "classes": ["Assassination", "Ardent Flame", "Earthen Heart"],
+      "role": "Heal",
+      "sets": ["Turning Tide", "Pearlescent Ward"],
+      "bars": {
+        "front": ["Pierce Armor", "Heroic Slash"],
+        "back": ["Igneous Shield", "Chains"]
+      },
+      "championPoints": {
+        "warior": ["", "", "", ""],
+        "mage": ["", "", "", ""],
+        "steed": ["", "", "", ""]
+      }
+    },
+    {
+      "id": 4,
+      "name": "Aelora",
+      "classes": ["Assassination", "Ardent Flame", "Earthen Heart"],
+      "role": "Heal",
+      "sets": ["Turning Tide", "Pearlescent Ward"],
+      "bars": {
+        "front": ["Pierce Armor", "Heroic Slash"],
+        "back": ["Igneous Shield", "Chains"]
+      },
+      "championPoints": {
+        "warior": ["", "", "", ""],
+        "mage": ["", "", "", ""],
+        "steed": ["", "", "", ""]
+      }
+    },
+    {
+      "id": 5,
+      "name": "Kyran",
+      "classes": ["Assassination", "Ardent Flame", "Earthen Heart"],
+      "role": "DPS",
+      "sets": ["Turning Tide", "Pearlescent Ward"],
+      "bars": {
+        "front": ["Pierce Armor", "Heroic Slash"],
+        "back": ["Igneous Shield", "Chains"]
+      },
+      "championPoints": {
+        "warior": ["", "", "", ""],
+        "mage": ["", "", "", ""],
+        "steed": ["", "", "", ""]
+      }
+    },
+    {
+      "id": 6,
+      "name": "Morryn",
+      "classes": ["Assassination", "Ardent Flame", "Earthen Heart"],
+      "role": "DPS",
+      "sets": ["Turning Tide", "Pearlescent Ward"],
+      "bars": {
+        "front": ["Pierce Armor", "Heroic Slash"],
+        "back": ["Igneous Shield", "Chains"]
+      },
+      "championPoints": {
+        "warior": ["", "", "", ""],
+        "mage": ["", "", "", ""],
+        "steed": ["", "", "", ""]
+      }
+    },
+    {
+      "id": 7,
+      "name": "Caelith",
+      "classes": ["Assassination", "Ardent Flame", "Earthen Heart"],
+      "role": "DPS",
+      "sets": ["Turning Tide", "Pearlescent Ward"],
+      "bars": {
+        "front": ["Pierce Armor", "Heroic Slash"],
+        "back": ["Igneous Shield", "Chains"]
+      },
+      "championPoints": {
+        "warior": ["", "", "", ""],
+        "mage": ["", "", "", ""],
+        "steed": ["", "", "", ""]
+      }
+    },
+    {
+      "id": 8,
+      "name": "Darius",
+      "classes": ["Assassination", "Ardent Flame", "Earthen Heart"],
+      "role": "DPS",
+      "sets": ["Turning Tide", "Pearlescent Ward"],
+      "bars": {
+        "front": ["Pierce Armor", "Heroic Slash"],
+        "back": ["Igneous Shield", "Chains"]
+      },
+      "championPoints": {
+        "warior": ["", "", "", ""],
+        "mage": ["", "", "", ""],
+        "steed": ["", "", "", ""]
+      }
+    },
+    {
+      "id": 9,
+      "name": "Elara",
+      "classes": ["Assassination", "Ardent Flame", "Earthen Heart"],
+      "role": "DPS",
+      "sets": ["Turning Tide", "Pearlescent Ward"],
+      "bars": {
+        "front": ["Pierce Armor", "Heroic Slash"],
+        "back": ["Igneous Shield", "Chains"]
+      },
+      "championPoints": {
+        "warior": ["", "", "", ""],
+        "mage": ["", "", "", ""],
+        "steed": ["", "", "", ""]
+      }
+    },
+    {
+      "id": 10,
+      "name": "Fenrir",
+      "classes": ["Assassination", "Ardent Flame", "Earthen Heart"],
+      "role": "DPS",
+      "sets": ["Turning Tide", "Pearlescent Ward"],
+      "bars": {
+        "front": ["Pierce Armor", "Heroic Slash"],
+        "back": ["Igneous Shield", "Chains"]
+      },
+      "championPoints": {
+        "warior": ["", "", "", ""],
+        "mage": ["", "", "", ""],
+        "steed": ["", "", "", ""]
+      }
+    },
+    {
+      "id": 11,
+      "name": "Grendal",
+      "classes": ["Assassination", "Ardent Flame", "Earthen Heart"],
+      "role": "DPS",
+      "sets": ["Turning Tide", "Pearlescent Ward"],
+      "bars": {
+        "front": ["Pierce Armor", "Heroic Slash"],
+        "back": ["Igneous Shield", "Chains"]
+      },
+      "championPoints": {
+        "warior": ["", "", "", ""],
+        "mage": ["", "", "", ""],
+        "steed": ["", "", "", ""]
+      }
+    },
+    {
+      "id": 12,
+      "name": "Zephyr",
+      "classes": ["Assassination", "Ardent Flame", "Earthen Heart"],
+      "role": "DPS",
+      "sets": ["Turning Tide", "Pearlescent Ward"],
+      "bars": {
+        "front": ["Pierce Armor", "Heroic Slash"],
+        "back": ["Igneous Shield", "Chains"]
+      },
+      "championPoints": {
+        "warior": ["", "", "", ""],
+        "mage": ["", "", "", ""],
+        "steed": ["", "", "", ""]
+      }
+    }
+  ]
+}
