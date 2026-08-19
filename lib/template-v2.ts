@@ -1,34 +1,109 @@
-export type RoleType = 'Tank' | 'Heal' | 'DPS';
-
-export interface SkillClasses {
-  MainSkillClass: string;
-  SecondSkillClass: string;
-  ThirdSkillClass: string;
+export enum RoleType {
+  Tank,
+  Heal,
+  DPS
 }
 
-export interface ClassMasteries {
-  firstClassMastery: string;
-  secondClassMastery: string;
+export enum SkillClass {
+  'Earthen Heart',
+  'Draconic Power',
+  'Ardent Flame',
+  'Aedric Spear',
+  "Dawn's Wrath",
+  "Purifying Light",
+  'Daedric Summoning',
+  'Dark Magic',
+  'Storm Calling',
+  'Assassination',
+  'Shadowy Embrace',
+  'Siphoning',
+  'Green Balance',
+  "Winter's Embrace",
+  'Animal Companions',
+  'Grave Lord',
+  'Living Death',
+  "Bone Tyrant",
+  "Curative Runeforms",
+  "Herald of the Tomes",
+  "Soldier of Apocrypha",
 }
 
-export interface SetMap {
-  head: string;
-  chest: string;
-  waist: string;
-  boots: string;
-  shoulders: string;
-  gloves: string;
-  legs: string;
-  ring1: string;
-  ring2: string;
-  necklace: string;
-  mainBarWeapon1: string;
-  mainBarWeapon2: string;
-  backBarWeapon1: string;
-  backBarWeapon2: string;
+export enum ClassMastery {
+  "TODO",
+}
+export type SkillClasses = {
+  MainSkillClass: SkillClass;
+  SecondSkillClass: SkillClass;
+  ThirdSkillClass: SkillClass;
 }
 
-export interface CompetencyMap {
+export type ClassMasteries = {
+  firstClassMastery: ClassMastery;
+  secondClassMastery: ClassMastery;
+}
+
+export type Effect = {
+  numberOfPiecesRequired: number;
+  buffDebuffIds: number[];
+}
+export type Set = {
+  id: number;
+  effects: Effect[];
+}
+
+export enum ArmorWeight {
+  light,
+  medium,
+  heavy,
+}
+
+export enum GearType {
+  armor,
+  jewelry,
+  weapon,
+}
+
+export enum WeaponType {
+  // TODO
+}
+export type GearPiece = {
+  type: GearType
+  setName: Set;
+  armorWeight: ArmorWeight;
+  trait: Trait;
+  enchantment: Enchant
+  weaponType: WeaponType
+}
+
+export enum Trait {
+  divine,
+}
+
+export enum Enchant {
+  // TODO
+}
+
+export enum MundusStone {
+
+}
+export type Gear = {
+  head: GearPiece;
+  chest: GearPiece;
+  waist: GearPiece;
+  boots: GearPiece;
+  shoulders: GearPiece;
+  gloves: GearPiece;
+  legs: GearPiece;
+  ring1: GearPiece;
+  ring2: GearPiece;
+  necklace: GearPiece;
+  mainBarWeapon1: GearPiece;
+  mainBarWeapon2: GearPiece;
+  backBarWeapon1: GearPiece;
+  backBarWeapon2: GearPiece;
+}
+
+export type Skills = {
   MainBar1: string;
   MainBar2: string;
   MainBar3: string;
@@ -43,7 +118,7 @@ export interface CompetencyMap {
   BackBarUlt: string;
 }
 
-export interface ChampionPointsMap {
+export type ChampionPoints = {
   Blue1: string;
   Blue2: string;
   Blue3: string;
@@ -58,32 +133,32 @@ export interface ChampionPointsMap {
   Green4: string;
 }
 
-export interface RaidPlayer {
+export type RaidPlayer = {
   id: number;
   name: string;
   role: RoleType;
   skillClasses: SkillClasses;
   classMasteries: ClassMasteries;
-  mundus: string;
+  mundus: MundusStone;
 }
 
-export interface FightPlayerStuff {
+export type FightPlayerStuff = {
   id: number;
   name: string;
   role: RoleType;
-  sets: SetMap;
-  competencies: CompetencyMap;
-  championPoints: ChampionPointsMap;
+  sets: Gear;
+  competencies: Skills;
+  championPoints: ChampionPoints;
   food: string;
   potion: string;
 }
 
-export interface FightDefinition {
+export type Encounter = {
   name: string;
   playersStuff: FightPlayerStuff[];
 }
 
-export interface RaidTemplateDocument {
+export type RaidTemplateDocument = {
   version: number;
   raid: {
     groupName: string;

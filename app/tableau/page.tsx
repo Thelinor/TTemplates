@@ -38,6 +38,49 @@ const POTION_OPTIONS = ['', 'Spell Power', 'Stamina', 'Health', 'Magicka', 'Tri-
 const MAIN_BAR_SLOTS = ['MainBar1', 'MainBar2', 'MainBar3', 'MainBar4', 'MainBar5'] as const;
 const BACK_BAR_SLOTS = ['BackBar1', 'BackBar2', 'BackBar3', 'BackBar4', 'BackBar5'] as const;
 
+// Placeholder images for set slots.
+// Replace these entries with the real set icon mapping later.
+const SET_SLOT_PLACEHOLDER_IMAGES: Record<string, string> = Object.fromEntries(
+  [
+    'head',
+    'shoulders',
+    'chest',
+    'gloves',
+    'waist',
+    'legs',
+    'boots',
+    'necklace',
+    'ring1',
+    'ring2',
+    'mainBarWeapon1',
+    'mainBarWeapon2',
+    'backBarWeapon1',
+    'backBarWeapon2',
+  ].map((slot, index) => {
+    const categories = getAllAbilityCategories();
+    const category = categories[index % categories.length];
+    const abilities = abilityCategories[category];
+    const ability = abilities[index % abilities.length];
+    return [slot, getAbilityImagePath(category, ability)] as const;
+  }),
+);
+
+const SET_LAYOUT_ROWS = [
+  [{ slot: 'head', label: 'Head', colSpan: 2 }],
+  [
+    { slot: 'shoulders', label: 'Shoulder' },
+    { slot: 'chest', label: 'Chest' },
+  ],
+  [
+    { slot: 'gloves', label: 'Arm' },
+    { slot: 'waist', label: 'Waist' },
+  ],
+  [
+    { slot: 'legs', label: 'Legs' },
+    { slot: 'boots', label: 'Boots' },
+  ],
+] as const;
+
 type SkillEditorState = { playerId: number; field: string };
 type SetEditorState = { playerId: number; slot: string };
 type ConsumableEditorState = { playerId: number; type: 'food' | 'potion' };
@@ -226,16 +269,60 @@ export default function TableauView() {
     );
   };
 
-  const renderViewSetBadge = (value: string) => {
-    if (!value) {
-      return <div className="flex h-8 min-w-[3.5rem] items-center justify-center rounded border border-dashed border-yellow-700 bg-yellow-950 px-2 text-[9px] text-yellow-500">—</div>;
-    }
-
-    const shortName = value.length > 12 ? `${value.slice(0, 12)}…` : value;
+  const renderSetSlot = (playerId: number, slot: string, label: string) => {
+    const playerStuff = fight.playersStuff.find((entry) => entry.id === playerId);
+    const value = playerStuff?.sets[slot as keyof typeof playerStuff.sets] ?? '';
+    const placeholderImage = SET_SLOT_PLACEHOLDER_IMAGES[slot];
 
     return (
-      <div title={value} className="flex h-8 min-w-[3.5rem] items-center justify-center rounded border border-yellow-600 bg-yellow-950 px-2 text-[9px] font-medium text-yellow-100">
-        {shortName}
+      <div className="flex min-w-0 flex-col items-center gap-1">
+        <span className="text-[9px] font-semibold uppercase tracking-wide text-yellow-300">
+          {label}
+        </span>
+        {isEditMode ? (
+          <button
+            type="button"
+            onClick={() => setSetEditor({ playerId, slot })}
+            title={value || `Choisir ${label}`}
+            className={`group relative flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden border-2 bg-black/60 p-0.5 transition hover:border-yellow-400 ${
+              value ? 'border-yellow-600' : 'border-dashed border-yellow-700'
+            }`}
+          >
+            <Image
+              src={placeholderImage}
+              alt=""
+              width={40}
+              height={40}
+              className="h-full w-full object-cover opacity-90"
+            />
+            {!value && (
+              <span className="absolute inset-0 flex items-center justify-center bg-black/35 text-sm text-yellow-300">
+                +
+              </span>
+            )}
+          </button>
+        ) : (
+          <div
+            title={value || `Aucun ${label}`}
+            className={`flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden border-2 bg-black/60 p-0.5 ${
+              value ? 'border-yellow-600' : 'border-dashed border-yellow-700'
+            }`}
+          >
+            <Image
+              src={placeholderImage}
+              alt=""
+              width={40}
+              height={40}
+              className={`h-full w-full object-cover ${value ? 'opacity-100' : 'opacity-40'}`}
+            />
+          </div>
+        )}
+        <span
+          title={value || 'Aucun set sélectionné'}
+          className="max-w-16 truncate text-[8px] text-yellow-100"
+        >
+          {value || '—'}
+        </span>
       </div>
     );
   };
@@ -379,25 +466,40 @@ export default function TableauView() {
                       </div>
                     </td>
                     <td className="px-4 py-6 text-sm text-yellow-100 align-top">
-                      <div className="grid grid-cols-2 gap-2">
-                        {Object.entries(playerStuff.sets).map(([key, value]) => (
-                          <div key={`${player.id}-set-${key}`} className="flex items-center gap-2">
-                            <label className="w-14 text-[10px] uppercase tracking-wide text-yellow-300">{key}</label>
-                            {isEditMode ? (
-                              <button
-                                type="button"
-                                onClick={() => setSetEditor({ playerId: player.id, slot: key })}
-                                className={`min-w-[3.5rem] rounded border px-2 py-1 text-left text-[9px] ${
-                                  value ? 'border-yellow-500 bg-yellow-950 text-yellow-100' : 'border-dashed border-yellow-600 bg-yellow-950 text-yellow-300'
-                                }`}
-                              >
-                                {value || 'Choisir'}
-                              </button>
-                            ) : (
-                              renderViewSetBadge(value)
-                            )}
-                          </div>
-                        ))}
+                      <div className="flex min-w-[16rem] flex-col items-center gap-3">
+                        {/* Armor: silhouette-style layout, matching the build/skills visual language. */}
+                        <div className="flex flex-col items-center gap-1">
+                          {SET_LAYOUT_ROWS.map((row, rowIndex) => (
+                            <div
+                              key={`set-row-${rowIndex}`}
+                              className="flex items-end justify-center gap-2"
+                            >
+                              {row.map((item) => (
+                                <div
+                                  key={`${player.id}-set-${item.slot}`}
+                                  className={item.colSpan ? 'mx-auto' : ''}
+                                >
+                                  {renderSetSlot(player.id, item.slot, item.label)}
+                                </div>
+                              ))}
+                            </div>
+                          ))}
+                        </div>
+
+                        {/* Jewelry */}
+                        <div className="flex items-end justify-center gap-2 border-t border-yellow-800 pt-2">
+                          {renderSetSlot(player.id, 'necklace', 'Necklace')}
+                          {renderSetSlot(player.id, 'ring1', 'Ring1')}
+                          {renderSetSlot(player.id, 'ring2', 'Ring2')}
+                        </div>
+
+                        {/* Weapon bars */}
+                        <div className="flex items-end justify-center gap-2 border-t border-yellow-800 pt-2">
+                          {renderSetSlot(player.id, 'mainBarWeapon1', 'Frontbar1')}
+                          {renderSetSlot(player.id, 'mainBarWeapon2', 'Frontbar2')}
+                          {renderSetSlot(player.id, 'backBarWeapon1', 'Backbar1')}
+                          {renderSetSlot(player.id, 'backBarWeapon2', 'Backbar2')}
+                        </div>
                       </div>
                     </td>
                     <td className="px-4 py-6 align-top text-sm text-yellow-100">
